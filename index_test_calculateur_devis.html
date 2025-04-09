@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Devis - Test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #001338;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 14px;
+            text-align: left;
+            display: block;
+            margin-top: 20px;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #001338;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #003366;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculateur de Devis</h1>
+        <form id="devis-form">
+            <label for="service">Choisissez un service</label>
+            <select id="service" required>
+                <option value="100">Service 1 - 100€</option>
+                <option value="200">Service 2 - 200€</option>
+                <option value="300">Service 3 - 300€</option>
+            </select>
+
+            <label for="quantity">Quantité</label>
+            <input type="number" id="quantity" required min="1" placeholder="Entrez la quantité">
+
+            <input type="submit" value="Calculer le devis">
+        </form>
+
+        <div class="result" id="result"></div>
+
+        <div class="footer">
+            <p>Testé uniquement à des fins de démonstration.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('devis-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const servicePrice = parseInt(document.getElementById('service').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const totalPrice = servicePrice * quantity;
+
+            document.getElementById('result').innerHTML = `Le prix total pour ${quantity} unité(s) du service sélectionné est de <strong>${totalPrice}€</strong>`;
+        });
+    </script>
+
+</body>
+</html>
